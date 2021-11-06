@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="entrantForm">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="entrants">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="entrant" type="Entrant" minOccurs="1" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="specialisationPlan" type="SpecialisationPlan"/>
+                <xs:element name="paid" type="xs:boolean"/>
+                <xs:element name="acceptedDate" type="xs:date"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Entrant">
+        <xs:sequence>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="patronymic" type="xs:string" minOccurs="0"/>
+            <xs:element name="dateOfBirth" type="xs:date"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Specialisation">
+        <xs:sequence>
+            <xs:element name="name"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SpecialisationPlanType" mixed="true">
+        <xs:sequence>
+            <xs:element name="name"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SpecialisationPlan">
+        <xs:sequence>
+            <xs:element name="specialisation" type="Specialisation"/>
+            <xs:element name="specialisationPlanType" type="SpecialisationPlanType"/>
+            <xs:element name="freePlacesAmount" type="xs:integer"/>
+            <xs:element name="paidPlacesAmount" type="xs:integer"/>
+            <xs:element name="cost" type="xs:double"/>
+            <xs:element name="lastUpdate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

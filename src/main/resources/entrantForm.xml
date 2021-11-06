@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<entrantForm id="0">
+
+    <entrants>
+        <entrant id="0">
+            <surname>Gorelikov</surname>
+            <name>Mikhail</name>
+            <dateOfBirth>2000-09-07</dateOfBirth>
+        </entrant>
+
+        <entrant id="1">
+            <surname>Kamarouski</surname>
+            <name>Andrei</name>
+            <patronymic>Sergeevich</patronymic>
+            <dateOfBirth>1998-04-27</dateOfBirth>
+        </entrant>
+    </entrants>
+
+    <specialisationPlan>
+
+        <specialisation>
+            <name>Automation of technological processes and productions</name>
+        </specialisation>
+
+        <specialisationPlanType>
+            <name>full-time</name>
+        </specialisationPlanType>
+
+        <freePlacesAmount>100</freePlacesAmount>
+        <paidPlacesAmount>25</paidPlacesAmount>
+        <cost>1000.20</cost>
+        <lastUpdate>2021-11-07</lastUpdate>
+    </specialisationPlan>
+
+    <paid>true</paid>
+
+    <acceptedDate>2021-11-07</acceptedDate>
+
+</entrantForm>
