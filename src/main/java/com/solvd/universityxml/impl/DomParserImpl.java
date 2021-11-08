@@ -1,6 +1,8 @@
 package com.solvd.universityxml.impl;
 
 import com.solvd.universityxml.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -25,6 +27,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class DomParserImpl implements Parser {
+
+    private static final Logger logger = LogManager.getLogger(DomParserImpl.class);
 
     @Override
     public EntrantForm parse(String xmlFile, String xslFile) {
@@ -171,10 +175,10 @@ public class DomParserImpl implements Parser {
             validator.validate(new DOMSource(document));
         } catch (SAXException e) {
             valid = false;
-            System.err.println("Error when try to validate xml" + e);
+            logger.error("Error when try to validate xml" + e);
         } catch (IOException e) {
             valid = false;
-            System.err.println("Error when try to open xml file" + e);
+            logger.error("Error when try to open xml file " + e);
         }
         return valid;
     }
@@ -190,7 +194,7 @@ public class DomParserImpl implements Parser {
                     )
             );
         } catch (SAXException e) {
-            System.err.println("Error when try to create new Schema " + e);
+            logger.error("Error when try to create new Schema " + e);
         }
         assert schema != null;
         return Optional.of(schema);
@@ -203,11 +207,11 @@ public class DomParserImpl implements Parser {
             DocumentBuilder builder = factory.newDocumentBuilder();
             document = builder.parse(readXmlFileIntoInputStream(xmlName));
         } catch (ParserConfigurationException e) {
-            System.err.println("Error when try to config parser" + e);
+            logger.error("Error when try to config parser" + e);
         } catch (SAXException e) {
-            System.err.println("Error when try to parse" + e);
+            logger.error("Error when try to parse" + e);
         } catch (IOException e) {
-            System.err.println("Error when try to read xml input stream" + e);
+            logger.error("Error when try to read xml input stream" + e);
         }
         assert document != null;
         return Optional.of(document);
