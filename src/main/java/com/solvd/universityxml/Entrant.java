@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Entrant {
+
     private Integer id;
     private String surname;
     private String name;

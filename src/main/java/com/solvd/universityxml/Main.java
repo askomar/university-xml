@@ -1,18 +1,15 @@
 package com.solvd.universityxml;
 
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import com.solvd.universityxml.impl.DomParserImpl;
 
 public class Main {
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+    public static void main(String[] args) {
         String schemaName = "entrantForm.xsd";
         String xmlName = "entrantForm.xml";
 
-        EntrantForm entrantForm = new EntrantForm();
-        entrantForm.parse(xmlName, schemaName);
+        Parser domParser = new DomParserImpl();
+        EntrantForm entrantForm = domParser.parse(xmlName, schemaName);
         System.out.println(entrantForm);
     }
 }
