@@ -60,7 +60,7 @@ public class DomParserImpl implements Parser {
                     Node entrantNode = entrantList.item(i);
                     if (node.getNodeType() == Node.ELEMENT_NODE) {
                         Element entrantElement = (Element) entrantNode;
-                        Entrant entrant = null;
+                        Entrant entrant;
                         int entrantId = Integer.parseInt(entrantElement.getAttribute("id"));
                         String surname = entrantElement.getElementsByTagName("surname").item(0).getTextContent();
                         String name = entrantElement.getElementsByTagName("name").item(0).getTextContent();
@@ -80,13 +80,13 @@ public class DomParserImpl implements Parser {
                 /**
                  * Parse specialisationPlan
                  */
-                SpecialisationPlan specialisationPlan = null;
+                SpecialisationPlan specialisationPlan;
                 Element specialisationPlanElenent = (Element) optDocument.get().getElementsByTagName("specialisationPlan").item(0);
 
                 /**
                  * Parse specialisation for SpecialisationPlan
                  */
-                Specialisation specialisation = null;
+                Specialisation specialisation;
                 Node specialisationNode = specialisationPlanElenent.getElementsByTagName("specialisation").item(0);
                 Element specialisationElement = (Element) specialisationNode;
                 String speciasisationName = specialisationElement.getElementsByTagName("name").item(0).getTextContent();
@@ -95,9 +95,9 @@ public class DomParserImpl implements Parser {
                 /**
                  * Parse specialisationPlanType for SpecialisationPlan
                  */
-                SpecialisationPlanType specialisationPlanType = null;
+                SpecialisationPlanType specialisationPlanType;
                 NodeList specialisationPlanTypeNode = specialisationPlanElenent.getElementsByTagName("specialisationPlanType");
-                String specialisationPlanTypeName = ((Element) specialisationPlanElenent).getElementsByTagName("name").item(0).getTextContent();
+                String specialisationPlanTypeName = ((Element) specialisationPlanTypeNode.item(0)).getElementsByTagName("name").item(0).getTextContent();
                 specialisationPlanType = new SpecialisationPlanType(specialisationPlanTypeName);
 
                 /**
@@ -159,7 +159,7 @@ public class DomParserImpl implements Parser {
                 return entrantForm;
             }
         } else {
-            throw new RuntimeException("Validation is falsed");
+            throw new RuntimeException("Validation is failed");
         }
         return null;
     }
