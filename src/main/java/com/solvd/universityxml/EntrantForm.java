@@ -1,14 +1,26 @@
 package com.solvd.universityxml;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.List;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class EntrantForm {
 
+    @XmlAttribute(name = "id")
     private int id;
+
+    @XmlElementWrapper(name = "entrants")
+    @XmlElement(name = "entrant")
     private List<Entrant> entrants;
+
+    @XmlElement(name = "specialisationPlan")
     private SpecialisationPlan specializationPlan;
     private boolean paid;
+
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate acceptedDate;
 
     public EntrantForm() {
@@ -53,7 +65,6 @@ public class EntrantForm {
     public void setPaid(boolean paid) {
         this.paid = paid;
     }
-
 
     public LocalDate getAcceptedDate() {
         return acceptedDate;

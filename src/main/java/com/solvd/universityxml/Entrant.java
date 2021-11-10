@@ -1,15 +1,26 @@
 package com.solvd.universityxml;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Entrant {
 
+    @XmlAttribute(name = "id")
     private Integer id;
     private String surname;
     private String name;
     private String patronymic;
+
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate dateOfBirth;
+
+    public Entrant() {
+    }
 
     public Entrant(Integer id, String surname, String name, LocalDate dateOfBirth) {
         this.id = id;
