@@ -4,6 +4,9 @@ public class Specialisation {
 
     private String name;
 
+    public Specialisation() {
+    }
+
     public Specialisation(String name) {
         this.name = name;
     }

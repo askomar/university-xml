@@ -1,5 +1,7 @@
 package com.solvd.universityxml;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,6 +12,9 @@ public class Entrant {
     private String name;
     private String patronymic;
     private LocalDate dateOfBirth;
+
+    public Entrant() {
+    }
 
     public Entrant(Integer id, String surname, String name, LocalDate dateOfBirth) {
         this.id = id;
@@ -27,6 +32,7 @@ public class Entrant {
         return id;
     }
 
+    @XmlAttribute(name = "id")
     public void setId(Integer id) {
         this.id = id;
     }
@@ -59,6 +65,7 @@ public class Entrant {
         return dateOfBirth;
     }
 
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }

@@ -1,5 +1,6 @@
 package com.solvd.universityxml;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 public class SpecialisationPlan {
@@ -10,6 +11,9 @@ public class SpecialisationPlan {
     private Integer paidPlacesAmount;
     private Double cost;
     private LocalDate lastUpdate;
+
+    public SpecialisationPlan() {
+    }
 
     public SpecialisationPlan(Specialisation specialisation, SpecialisationPlanType specialisationPlanType, Integer freePlacesAmount, Integer paidPlacesAmount, Double cost, LocalDate lastUpdate) {
         this.specialisation = specialisation;
@@ -64,6 +68,7 @@ public class SpecialisationPlan {
         return lastUpdate;
     }
 
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     public void setLastUpdate(LocalDate lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
