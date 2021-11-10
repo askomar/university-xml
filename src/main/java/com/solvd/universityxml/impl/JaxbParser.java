@@ -21,7 +21,7 @@ public class JaxbParser implements Parser {
     @Override
     public EntrantForm parse(String xmlFile, String xslFile) {
         Optional<Schema> optSchema = loadSchema(xslFile);
-        Unmarshaller unmarshaller = null;
+        Unmarshaller unmarshaller;
         EntrantForm entrantForm = null;
         try {
             JAXBContext context = JAXBContext.newInstance(EntrantForm.class);

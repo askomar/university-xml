@@ -1,20 +1,26 @@
 package com.solvd.universityxml;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class EntrantForm {
 
+    @XmlAttribute(name = "id")
     private int id;
+
+    @XmlElementWrapper(name = "entrants")
+    @XmlElement(name = "entrant")
     private List<Entrant> entrants;
+
+    @XmlElement(name = "specialisationPlan")
     private SpecialisationPlan specializationPlan;
     private boolean paid;
+
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate acceptedDate;
 
     public EntrantForm() {
@@ -32,7 +38,6 @@ public class EntrantForm {
         return id;
     }
 
-    @XmlAttribute(name = "id")
     public void setId(int id) {
         this.id = id;
     }
@@ -41,8 +46,6 @@ public class EntrantForm {
         return entrants;
     }
 
-    @XmlElementWrapper(name = "entrants")
-    @XmlElement(name = "entrant")
     public void setEntrants(List<Entrant> entrants) {
         this.entrants = entrants;
     }
@@ -51,7 +54,6 @@ public class EntrantForm {
         return specializationPlan;
     }
 
-    @XmlElement(name = "specialisationPlan")
     public void setSpecializationPlan(SpecialisationPlan specializationPlan) {
         this.specializationPlan = specializationPlan;
     }
@@ -64,12 +66,10 @@ public class EntrantForm {
         this.paid = paid;
     }
 
-
     public LocalDate getAcceptedDate() {
         return acceptedDate;
     }
 
-    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     public void setAcceptedDate(LocalDate acceptedDate) {
         this.acceptedDate = acceptedDate;
     }
