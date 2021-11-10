@@ -37,7 +37,6 @@ public class ParserUtils {
         } catch (SAXException e) {
             logger.error("Error when try to create new Schema " + e);
         }
-        assert schema != null;
         return Optional.of(schema);
     }
 
@@ -54,7 +53,6 @@ public class ParserUtils {
         } catch (IOException e) {
             logger.error("Error when try to read xml input stream" + e);
         }
-        assert document != null;
         return Optional.of(document);
     }
 

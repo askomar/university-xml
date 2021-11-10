@@ -27,15 +27,15 @@ public class JaxbParser implements Parser {
             JAXBContext context = JAXBContext.newInstance(EntrantForm.class);
             unmarshaller = context.createUnmarshaller();
             unmarshaller.setSchema(optSchema.get());
+            try {
+                entrantForm = (EntrantForm) unmarshaller.unmarshal(readXmlFileIntoInputStream(xmlFile));
+            } catch (JAXBException e) {
+                logger.error("Error when try to unmarshall using JaxbParser " + e);
+            }
         } catch (JAXBException e) {
             logger.error("Error when try to initialise unmarshaller " + e);
         }
-        try {
-            assert unmarshaller != null;
-            entrantForm = (EntrantForm) unmarshaller.unmarshal(readXmlFileIntoInputStream(xmlFile));
-        } catch (JAXBException e) {
-            logger.error("Error when try to unmarshall using JaxbParser " + e);
-        }
+
         return entrantForm;
     }
 }
