@@ -1,0 +1,34 @@
+{
+  "EntrantForm": {
+    "id": 0,
+    "entrants": [
+      {
+        "id": 0,
+        "surname": "Gorelikov",
+        "name": "Mikhail",
+        "dateOfBirth": "2000-09-07"
+      },
+      {
+        "id": 1,
+        "surname": "Kamarouski",
+        "name": "Andrei",
+        "patronymic": "Sergeevich",
+        "dateOfBirth": "1998-04-27"
+      }
+    ],
+    "specialisationPlan": {
+      "specialisation": {
+        "name": "Automation of technological processes and productions"
+      },
+      "specialisationPlanType": {
+        "name": "full-time"
+      },
+      "freePlacesAmount": 100,
+      "paidPlacesAmount": 25,
+      "cost": 1000.2,
+      "lastUpdate": "2021-11-07"
+    },
+    "paid": true,
+    "acceptedDate": "2021-11-07"
+  }
+}

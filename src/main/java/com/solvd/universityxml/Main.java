@@ -1,6 +1,7 @@
 package com.solvd.universityxml;
 
 import com.solvd.universityxml.impl.DomParser;
+import com.solvd.universityxml.impl.JacksonParser;
 import com.solvd.universityxml.impl.JaxbParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,5 +23,10 @@ public class Main {
         Parser jaxbParser = new JaxbParser();
         EntrantForm jaxbEntrantForm = jaxbParser.parse(xmlName, schemaName);
         logger.debug(jaxbEntrantForm);
+
+        logger.info("########## Using Jackson to parse EntrantForm ##########");
+        Parser jacksonParser = new JacksonParser();
+        EntrantForm jacksonbEntrantForm = jacksonParser.parse("entrantForm.json", "");
+        logger.debug(jacksonbEntrantForm);
     }
 }
