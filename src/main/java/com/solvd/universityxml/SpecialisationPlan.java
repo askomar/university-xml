@@ -1,5 +1,7 @@
 package com.solvd.universityxml;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -14,6 +16,7 @@ public class SpecialisationPlan {
     private Integer paidPlacesAmount;
     private Double cost;
 
+    @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate lastUpdate;
 

@@ -1,25 +1,31 @@
 package com.solvd.universityxml;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.List;
 
-@XmlRootElement
+@XmlRootElement(name = "entrantForm")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class EntrantForm {
 
     @XmlAttribute(name = "id")
     private int id;
 
+    @JsonProperty("entrants")
     @XmlElementWrapper(name = "entrants")
     @XmlElement(name = "entrant")
     private List<Entrant> entrants;
 
+    @JsonProperty("specialisationPlan")
     @XmlElement(name = "specialisationPlan")
     private SpecialisationPlan specializationPlan;
     private boolean paid;
 
+    @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate acceptedDate;
 

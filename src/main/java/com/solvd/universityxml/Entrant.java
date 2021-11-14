@@ -1,5 +1,7 @@
 package com.solvd.universityxml;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -16,6 +18,7 @@ public class Entrant {
     private String name;
     private String patronymic;
 
+    @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate dateOfBirth;
 
